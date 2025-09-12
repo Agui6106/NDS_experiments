@@ -1,0 +1,5 @@
+# Hola!
+Hola, me llamos Jose Aguilar un mexicano con el objetivo de cumplir el sueño de apredner a programar juegos y homebrew para la Nintendo DS, espero que si llegas a ver este repositorio te sea de ayuda para todo lo que necesitas. Este archvio solo es apra dejar notas improtnates sobre el desarollo del proyecto o notas personales que se me ocurran durante el desarollo de este proyecto. Despues de todo eso tambien es documentacion no? 
+
+## 12 de Septimbre de 2025, Seul, Corea del sur.
+Bueno si estoy en Corea ahora, estoy en un intercambio en Dongguk University, pero sorprendentemnte no llevo ninguna materia de ingenieria, preferi llevar algo ams culttral. Sin emabrgo queria practicar programacion asi que yo creo que hacer estas practicas seran bastnte utiles. este lugar es incrible, imposible no negarlo, sin emabrgo no hay lugar comel hogar, si el hogar tambien es cruel y hsotil  lo ah sido con nosotros y me ha llevado a venri hasta aqui con al esperanza tambien de seguir luchando para una vida mejor.
