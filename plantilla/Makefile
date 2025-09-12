@@ -13,11 +13,12 @@ include $(DEVKITARM)/ds_rules
 # BUILD is the directory where object files & intermediate files will be placed
 # SOURCES is a list of directories containing source code
 # INCLUDES is a list of directories containing extra header files
+# NOTA!!!: No olvides agregar las carpetas que tu proyecto enceiste en SOURCES e INCLUDES!!!
 #---------------------------------------------------------------------------------
 TARGET		:=	$(shell basename $(CURDIR))
 BUILD		:=	build
-SOURCES		:=	gfx source data
-INCLUDES	:=	include build
+SOURCES		:=	gfx source data logic
+INCLUDES	:=	include build logic
 
 #---------------------------------------------------------------------------------
 # options for code generation

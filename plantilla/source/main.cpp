@@ -5,16 +5,22 @@
 // para Nintendo DS usando devkitPro/libnds.
 // Incluye inicialización, bucle principal y puntos clave comentados.
 
+// Librerias requeridas de devkitPro/libnds
 #include <nds.h>     // Librería principal de libnds
+
+// Librerias de terceros
 #include <stdio.h>   // Para usar iprintf (texto en consola)
+
+// Librerias propias
+#include "logic.h"  // Tu archivo de lógica del juego (si tienes uno)
 
 // Función principal (punto de entrada)
 int main(void) {
     // -----------------------------
     // 1. Inicialización de IRQs
     // -----------------------------
-    irqInit();               // Inicializa el sistema de interrupciones
-    irqEnable(IRQ_VBLANK);   // Habilita interrupción de VBlank (sincronización de pantalla)
+    //irqInit();               // Inicializa el sistema de interrupciones
+    //irqEnable(IRQ_VBLANK);   // Habilita interrupción de VBlank (sincronización de pantalla)
 
     // -----------------------------
     // 2. Inicialización de pantalla/consola
@@ -54,7 +60,7 @@ int main(void) {
         }
 
         // 4.2 Actualizar lógica del juego (Tu programas esta parte)
-        // updateGameLogic();
+        showMessage();
 
         // 4.3 Preparar gráficos (sprites/fondos)
         // drawSprites();
