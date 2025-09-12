@@ -1,0 +1,1 @@
+Esta practica tiene la finalidad de introudcir al programador con un programa simple "Hello world" para la Nintendo DS
