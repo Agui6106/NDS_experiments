@@ -1,0 +1,20 @@
+# Archivos de compilación
+*.o
+*.elf
+*.d
+*.map
+*.nds
+
+# Carpetas de build
+build/
+
+# Archivos temporales / logs
+*.log
+
+# Configuración local de VSCode
+.vscode/
+
+# Archivos del sistema (Windows/macOS)
+Thumbs.db
+desktop.ini
+.DS_Store
