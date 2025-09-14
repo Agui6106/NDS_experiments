@@ -24,8 +24,8 @@ int main(void) {
         uint32_t held = keysHeld(); 
         uint32_t up   = keysUp();   
 
-        key_pressed(down, held, up);
-        hold_more_keys(held);
+        //key_pressed(down, held, up);
+        key_detector(held);
         //key_hold_time();
 
         // Esperar al siguiente frame (sincronización VBlank)

@@ -13,7 +13,7 @@ static uint32_t prevHeld = 0;
 
 // Prototipos de funciones
 void key_pressed(uint32_t down, uint32_t held, uint32_t up);
-void hold_more_keys(uint32_t held);
+void key_detector(uint32_t held);
 void key_hold_time(void);
 
 #endif

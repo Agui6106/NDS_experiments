@@ -64,7 +64,7 @@ void key_pressed(uint32_t down, uint32_t held, uint32_t up) {
 }
 
 // Mostrar cuando 2 o más teclas están siendo mantenidas
-void hold_more_keys(uint32_t held) {
+void key_detector(uint32_t held) {
     // --- Mostrar cuando 2 o más teclas están siendo mantenidas ---
     // Nombres de teclas para debug (Diccioanario)
     const char* keyNames[] = {
