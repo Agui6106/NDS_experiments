@@ -2,6 +2,7 @@
 #include <nds.h>     
 // Librerias de terceros
 #include <stdio.h>   
+#include "keys.h"
 
 // Constantes de lectura de teclas(botones)
 #define TOTAL_KEYS 16   // La DS usa hasta 16 bits en la máscara de teclas
