@@ -94,7 +94,7 @@ void key_detector(uint32_t held) {
 }
 
 // Detecta el tiempo que UNA SOLA tecla ha sido mantenida
-void key_hold_time(void) {
+void key_hold_time(uint32_t down, uint32_t held, uint32_t up) {
     iprintf("--- key_hold_time() ---\n");
     /*
     // Inicializar arrays solo la primera vez
@@ -106,18 +106,6 @@ void key_hold_time(void) {
         }
         initialized = true;
         iprintf("Inicialización de arrays completada.\n");
-    }
-
-    // Leer entrada
-    scanKeys();                  
-    //uint32_t down = keysDown(); 
-    //uint32_t held = keysHeld(); 
-    //uint32_t up   = keysUp();   
-
-    // --- Mostrar cambios en teclas mantenidas ---
-    if (held != prevHeld) {
-        iprintf("Held mask: 0x%04x\n", (unsigned int) held);
-        prevHeld = held;
     }
 
     // --- detectar tiempo de teclas presionadas ---
