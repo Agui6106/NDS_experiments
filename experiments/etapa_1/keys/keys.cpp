@@ -39,7 +39,7 @@
 
 // Detecta cuando una tecla es presionada (evento "down")
 void key_pressed(uint32_t down, uint32_t held, uint32_t up) {
-    // Detectar pulsaciones (evento "down")
+    // Puedes cambiarlo a un return para obtener la tecla que fue presionada
     if (down & KEY_A)      iprintf("A pressed\n");
     if (down & KEY_B)      iprintf("B pressed\n");
     if (down & KEY_X)      iprintf("X pressed\n");
