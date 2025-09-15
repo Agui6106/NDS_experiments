@@ -49,18 +49,11 @@ void key_pressed(uint32_t down, uint32_t held, uint32_t up) {
     if (down & KEY_SELECT) iprintf("SELECT pressed\n");
     if (down & KEY_START)  iprintf("START pressed\n");
     if (down & KEY_TOUCH)  iprintf("TOUCH pressed (stylus)\n");
+    if (down & KEY_UP)     iprintf("UP pressed\n");
+    if (down & KEY_DOWN)   iprintf("DOWN pressed\n");
+    if (down & KEY_LEFT)   iprintf("LEFT pressed\n");
+    if (down & KEY_RIGHT)  iprintf("RIGHT pressed\n");
         
-/*
-    // --- Detectar pulsaciones (evento "down") ---
-    for (int i = 0; i < TOTAL_KEYS; i++) {
-        uint32_t mask = 1 << i;   // bitmask de la tecla i
-
-        if (down & mask) {
-            iprintf("Tecla %d PRESIONADA en frame %d\n", i, frameCount);
-        }
-    }
-
-    frameCount++;*/
 }
 
 // Mostrar cuando 2 o más teclas están siendo mantenidas
