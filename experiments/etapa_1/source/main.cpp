@@ -26,7 +26,7 @@ int main(void) {
 
         //key_pressed(down, held, up);
         key_detector(held);
-        //key_hold_time();
+        key_hold_time(down, held, up);
 
         // Esperar al siguiente frame (sincronización VBlank)
         swiWaitForVBlank();

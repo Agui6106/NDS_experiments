@@ -33,9 +33,26 @@
     IMPORTANTE: Cadda funcion solo detecta un evento por frame.
 */
 
+// Librerias
 #include <nds.h>
 #include <stdio.h>
 #include "keys.h"
+
+// Variables globales
+// Nombres de teclas para debug (Diccioanario)
+const char* keyNames[] = {
+    "A", "B", "SELECT", "START",
+    "RIGHT", "LEFT", "UP", "DOWN",
+    "R", "L", "X", "Y",
+    "TOUCH", "LID", "DEBUG", "UNKNOWN"
+};
+
+// Variables estáticas que persisten entre llamadas
+static int frameCount = 0;
+static int startFrames[TOTAL_KEYS];
+static bool isHeld[TOTAL_KEYS];
+static uint32_t prevHeld = 0;
+static bool initialized = false;
 
 // Detecta cuando una tecla es presionada (evento "down")
 void key_pressed(uint32_t down, uint32_t held, uint32_t up) {
@@ -59,14 +76,6 @@ void key_pressed(uint32_t down, uint32_t held, uint32_t up) {
 // Mostrar cuando 2 o más teclas están siendo mantenidas
 void key_detector(uint32_t held) {
     // --- Mostrar cuando 2 o más teclas están siendo mantenidas ---
-    // Nombres de teclas para debug (Diccioanario)
-    const char* keyNames[] = {
-        "A", "B", "SELECT", "START",
-        "RIGHT", "LEFT", "UP", "DOWN",
-        "R", "L", "X", "Y",
-        "TOUCH", "LID", "DEBUG", "UNKNOWN"
-    };
-
     if (held != prevHeld) {
         // Imprimir tecla en hexadecimal
         iprintf("Held mask: 0x%04x\n", (unsigned int) held);
@@ -88,19 +97,18 @@ void key_detector(uint32_t held) {
 
 // Detecta el tiempo que UNA SOLA tecla ha sido mantenida
 void key_hold_time(uint32_t down, uint32_t held, uint32_t up) {
-    iprintf("--- key_hold_time() ---\n");
-    /*
-    // Inicializar arrays solo la primera vez
-    static bool initialized = false;
+    //iprintf("--- key_hold_time() ---\n");
+    // Inicializar arrays contadores
     if (!initialized) {
         for (int i = 0; i < TOTAL_KEYS; i++) {
             startFrames[i] = 0;
             isHeld[i] = false;
         }
         initialized = true;
-        iprintf("Inicialización de arrays completada.\n");
+        iprintf("Array created succesfully :D\n");
     }
-
+            
+    /*
     // --- detectar tiempo de teclas presionadas ---
     for (int i = 0; i < TOTAL_KEYS; i++) {
         uint32_t mask = 1 << i;   // bitmask de la tecla i
