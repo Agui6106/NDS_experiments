@@ -81,14 +81,12 @@ void key_detector(uint32_t held) {
         iprintf("Held mask: 0x%04x\n", (unsigned int) held);
 
         // Contar e imprimir teclas activas cuántas teclas están siendo mantenidas (Recorrer el array)
-        iprintf("Teclas presionadas: ");
         for (int i = 0; i < 16; i++) {
             if (held & (1 << i)) {
-                iprintf("[%s] ", keyNames[i]);
+                iprintf("Teclas presionadas: [%s] ", keyNames[i]);
             }
         }
         iprintf("\n");
-
 
         prevHeld = held;
         }
@@ -105,29 +103,54 @@ void key_hold_time(uint32_t down, uint32_t held, uint32_t up) {
             isHeld[i] = false;
         }
         initialized = true;
-        iprintf("Array created succesfully :D\n");
+        iprintf("Array created succesfully :D\n\n");
     }
-            
-    /*
-    // --- detectar tiempo de teclas presionadas ---
-    for (int i = 0; i < TOTAL_KEYS; i++) {
-        uint32_t mask = 1 << i;   // bitmask de la tecla i
+          /*  
+    // Solo imprimir la máscara si cambió (evita spam)
+    if (held != prevHeld) {
+        //iprintf("Held mask: 0x%04x    ", (unsigned int) held);
+        // Imprimir nombres de teclas actualmente mantenidas
+        iprintf("Teclas: ");
+        int count = 0;
+        // Recorrer el array de teclas y contar cuántas están siendo mantenidas
+        for (int i = 0; i < TOTAL_KEYS; i++) {
+            if (held & (1u << i)) {
+                iprintf("[%s] ", keyNames[i]);
+                count++;
+            }
+        }
+        iprintf(" (count=%d)\n", count);
+        prevHeld = held;
+    }*/
 
-        if (down & mask) {
+    // Para cada tecla: registrar inicio en 'down', medir duración en 'up'
+    for (int i = 0; i < TOTAL_KEYS; i++) {
+        uint32_t mask = (1u << i);
+
+        if (down & mask) { // Si es presionada...
+            // Guarda el frame actual
             isHeld[i] = true;
             startFrames[i] = frameCount;
-            iprintf("Tecla %d PRESIONADA en frame %d\n", i, frameCount);
+            // Si quieres ver el frame donde se presionod:
+            // iprintf("Tecla %s PRESIONADA en frame %d\n", keyNames[i], frameCount);
         }
 
-        if (up & mask && isHeld[i]) {
+        if ((up & mask) && isHeld[i]) { // Si es soltada...
+            // Calcular duración de esta pulsación solamente
             isHeld[i] = false;
             int duration = frameCount - startFrames[i];
-            float seconds = duration / 60.0f; 
-            iprintf("Tecla %d LIBERADA: %d frames (%.2f s)\n", 
-                    i, duration, seconds);
+            //float seconds = duration / 60.0f; // ~60 fps
+            int ms = (int)((duration * 1000) / 60); // milisegundos
+            iprintf("[%s] hold by: %d frames (%d ms)\n",
+                    keyNames[i], duration, ms);
+
+            // Reiniciar contador de ese botón (preparado para próxima pulsación)
+            startFrames[i] = 0;
         }
     }
 
-    frameCount++; */
+    // aumentar contador global de frames (llamar cada frame desde main)
+    frameCount++;
+
 }
 // Fin de keys.cpp
