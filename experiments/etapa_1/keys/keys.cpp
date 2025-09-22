@@ -83,10 +83,9 @@ void key_detector(uint32_t held) {
         // Contar e imprimir teclas activas cuántas teclas están siendo mantenidas (Recorrer el array)
         for (int i = 0; i < 16; i++) {
             if (held & (1 << i)) {
-                iprintf("Teclas presionadas: [%s] ", keyNames[i]);
+                iprintf("Teclas presionadas: [%s]\n", keyNames[i]);
             }
         }
-        iprintf("\n");
 
         prevHeld = held;
         }
@@ -141,7 +140,7 @@ void key_hold_time(uint32_t down, uint32_t held, uint32_t up) {
             int duration = frameCount - startFrames[i];
             //float seconds = duration / 60.0f; // ~60 fps
             int ms = (int)((duration * 1000) / 60); // milisegundos
-            iprintf("[%s] hold by: %d frames (%d ms)\n",
+            iprintf("[%s] hold by: %d frames\nAprox: %d ms)\n",
                     keyNames[i], duration, ms);
 
             // Reiniciar contador de ese botón (preparado para próxima pulsación)
