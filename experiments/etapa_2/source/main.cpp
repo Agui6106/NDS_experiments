@@ -5,7 +5,7 @@
 
 // Incluir Sprites y fondos
 // #include "gfx/bg.h"
-#include "casa.h"
+#include "casa.h" // Imagen que generaste por grit
 
 /*
 NOTA: Recuerde que los archivos .h y .c generados por grit
@@ -19,7 +19,15 @@ El flag -gT indica que se generen tiles (sprites)
 El flag -p indica que se genere la paleta
 El flag -o indica el prefijo de los archivos generados
 
+Este programa usa 2 versiones del mismo.
+Version 1: Mostrar sprite en la pantalla superior
+Version 2: Mostrar sprite en la pantalla inferior (Sin consola)
+
+Descomentar la version deseada.
+
 */
+
+// --- VERSION 1: Mostrar sprite en la pantalla superior con consola --- //
 
 // Inicializacion
 int main(void) {
