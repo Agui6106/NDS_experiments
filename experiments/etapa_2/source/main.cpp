@@ -7,6 +7,13 @@
 // #include "gfx/bg.h"
 #include "casa.h" // Imagen que generaste por grit
 
+// Definiciones de sprite
+#define SPRITE_W 32
+#define SPRITE_H 32
+#define SCREEN_W 256
+#define SCREEN_H 192
+
+
 /*
 NOTA: Recuerde que los archivos .h y .c generados por grit
 deben estar en un directorio declarado en makefile.
@@ -34,7 +41,7 @@ int main(void) {
     iprintf("Etapa 2 - Load/Control of sprites\n");
     iprintf("By Azuki Ind.     1-Oct-2025\n");
     iprintf("================================\n");
-    iprintf("Presiona cualquier boton de la consola.\n\n");
+    iprintf("Use el D-Pad para mover el sprite.\n\n");
 
     // Configurar video en la pantalla superior (main) para sprites
     videoSetMode(MODE_0_2D);
@@ -72,8 +79,8 @@ int main(void) {
         // --- Limitar movimiento dentro de la pantalla ---
         if (x < 0)   x = 0;
         if (y < 0)   y = 0;
-        if (x > 224) x = 224;
-        if (y > 160) y = 160;
+        if (x > SCREEN_W - SPRITE_W) x = SCREEN_W - SPRITE_W;
+        if (y > SCREEN_H - SPRITE_H) y = SCREEN_H - SPRITE_H;
 
         // Actualizar sprite
         oamSet(&oamMain, 0, x, y, 0, 0, SpriteSize_32x32, SpriteColorFormat_256Color,
