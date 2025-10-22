@@ -5,11 +5,12 @@
 #include <fat.h>    // No olvides incluiarla en makefile (LIBS	:= -lfat -lnds9)
 #include <time.h>
 #include <stdio.h>
+#include <string>
 
 // Inicializa la FAT (SD) y muestra mensaje en caso de error
 bool inicializarFAT();
 
 // Muestra la hora actual de inicio del juego
-void mostrarHoraActual();
+std::string HoraActual();
 
 #endif

@@ -13,16 +13,18 @@ bool inicializarFAT() {
 }
 
 // Muestra la hora actual (Interna de la consola) de inicio del juego
-void mostrarHoraActual() {
+std::string HoraActual(){
     time_t rawTime;
     time(&rawTime);
     struct tm* timeInfo = localtime(&rawTime);
 
     if (timeInfo != NULL) {
-        iprintf("Started on: %02d/%02d/%04d %02d:%02d:%02d\n",
+        char buf[64];
+        std::snprintf(buf, sizeof(buf), "%02d/%02d/%04d %02d:%02d:%02d\n",
             timeInfo->tm_mday, timeInfo->tm_mon + 1, timeInfo->tm_year + 1900,
             timeInfo->tm_hour, timeInfo->tm_min, timeInfo->tm_sec);
+        return std::string(buf);
     } else {
-        iprintf("[WARN]: No se pudo obtener la hora actual.\n");
+        return std::string();
     }
 }
