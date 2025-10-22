@@ -16,8 +16,8 @@ include $(DEVKITARM)/ds_rules
 #---------------------------------------------------------------------------------
 TARGET		:=	$(shell basename $(CURDIR))
 BUILD		:=	build
-SOURCES		:=	gfx source data 
-INCLUDES	:=	include build data
+SOURCES		:=	gfx source data savehandle 
+INCLUDES	:=	include build data savehandle 
 
 #---------------------------------------------------------------------------------
 # options for code generation
@@ -36,7 +36,7 @@ LDFLAGS	=	-specs=ds_arm9.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS	:= -lnds9
+LIBS	:= -lfat -lnds9
 
 
 #---------------------------------------------------------------------------------
