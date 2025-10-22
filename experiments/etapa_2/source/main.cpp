@@ -19,10 +19,6 @@ El flag -gT indica que se generen tiles (sprites)
 El flag -p indica que se genere la paleta
 El flag -o indica el prefijo de los archivos generados
 
-Este programa usa 2 versiones del mismo.
-Version 1: Mostrar sprite en la pantalla superior
-Version 2: Mostrar sprite en la pantalla inferior (Sin consola)
-
 Descomentar la version deseada.
 
 */
@@ -72,6 +68,12 @@ int main(void) {
         if(keys & KEY_RIGHT) x++;
         if(keys & KEY_UP)    y--;
         if(keys & KEY_DOWN)  y++;
+
+        // --- Limitar movimiento dentro de la pantalla ---
+        if (x < 0)   x = 0;
+        if (y < 0)   y = 0;
+        if (x > 224) x = 224;
+        if (y > 160) y = 160;
 
         // Actualizar sprite
         oamSet(&oamMain, 0, x, y, 0, 0, SpriteSize_32x32, SpriteColorFormat_256Color,
